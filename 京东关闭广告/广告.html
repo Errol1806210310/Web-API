@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #top {
+      background-color: #CE1C1C;
+    }
+
+    #top-background {
+      position: relative;
+      width: 100%;
+      height: 80px;
+      background: url(luzhou.jpg) no-repeat center;
+    }
+
+    #cha {
+      background: url(closeclose.jpg) no-repeat;
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      top: 0px;
+      right: 167px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="top">
+    <div id="top-background">
+      <i id="cha"></i>
+    </div>
+  </div>
+
+  <script>
+    var cha = document.getElementById('cha');
+    var aaa = document.getElementById('top');
+    cha.onclick = function () {
+      aaa.style.display = 'none';
+    };
+
+  </script>
+</body>
+
+</html>
