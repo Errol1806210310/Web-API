@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    input {
+      color: rgb(126, 120, 120);
+      border: 1px solid black;
+      border-radius: 3px;
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div><input type="text" value="邮箱/ID/手机号"></div>
+
+  <script>
+    var text = document.querySelector('input');
+    text.onfocus = function () {
+      if (this.value == '邮箱/ID/手机号')              //点击
+        this.value = '';                   //必须要先进行判断，否则无论输入什么，都会变为空
+      this.style.borderColor = 'pink';
+      this.style.color = 'black';
+    }
+    text.onblur = function () {                    //离开  
+      if (this.value == '')
+        this.value = '邮箱/ID/手机号'
+      text.style.borderColor = 'black';
+    }
+  </script>
+</body>
+
+</html>
