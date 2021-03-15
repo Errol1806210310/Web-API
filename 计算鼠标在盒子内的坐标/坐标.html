@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .pink {
+      background-color: pink;
+      width: 300px;
+      height: 300px;
+      margin: 100px 100px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="pink"></div>
+
+  <script>
+    var div = document.querySelector('div');
+    div.addEventListener('mousemove', function (e) {
+      var x = e.pageX - div.offsetLeft;
+      var y = e.pageY - div.offsetTop;
+      console.log('X为' + x + ',y为' + y);
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .focus {
+      position: relative;
+      margin: 100px auto;
+      width: 720px;
+      height: 455px;
+      background-color: purple;
+      overflow: hidden;
+    }
+
+    .focus ul {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 500%;
+      height: 455px;
+      /* 为什么没有浮动起来，因为ul继承父元素大小，ul小于子元素的宽度，为了使它大于子元素的宽度，设置大小，子元素宽度可以大于父元素 */
+      list-style-type: none;
+      margin: 0;
+    }
+
+    .focus ul li {
+      float: left;
+      /* li中的图片必须在一行上面，左右划动，利用float：left */
+    }
+
+    .focus ul li img {
+      border: 0;
+      width: 720px;
+      height: 455px;
+    }
+
+    .arrow-l,
+    .arrow-r {
+      display: none;
+      position: absolute;
+      top: 50%;
+      width: 24px;
+      height: 40px;
+      background-color: rgba(0, 0, 0, .3);
+      text-align: center;
+      line-height: 40px;
+      color: #fff;
+      font-size: 18px;
+      z-index: 99;
+      text-decoration: none;
+    }
+
+    .arrow-l {
+      left: 0;
+    }
+
+    .arrow-r {
+      right: 0;
+    }
+
+    .circle {
+      z-index: 999;
+      position: absolute;
+      bottom: 10px;
+      left: 50px;
+    }
+
+    .circle li {
+      float: left;
+      width: 8px;
+      height: 8px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      margin: 0 3px;
+      border-radius: 50%;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .current {
+      background-color: white;
+    }
+  </style>
+  <script src="js/animate.js"></script>
+  <script src="js/index.js"></script>
+</head>
+
+<body>
+  <div class="focus">
+    <a href="#" class="arrow-l">&lt;</a>
+    <a href="#" class="arrow-r">&gt;</a>
+    <ul>
+      <li><a href="#"><img src="1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="3.jpg" alt=""></a></li>
+      <li><a href="#"><img src="4.jpg" alt=""></a></li>
+    </ul>
+    <ol class="circle"></ol>
+  </div>
+</body>
+
+</html>

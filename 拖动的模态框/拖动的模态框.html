@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .header {
+      text-align: center;
+    }
+
+    .header a {
+      text-decoration: none;
+      font-size: 25px;
+      color: black;
+    }
+
+    .login-bg {
+      display: none;
+      position: fixed;
+      background: rgba(0, 0, 0, .3);
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+    }
+
+    /* 背景颜色和弹出框都设置为fixed，且为弹出框设置层级 */
+
+    .login {
+      display: none;
+      width: 512px;
+      height: 280px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /*  水平垂直居中 */
+      background: #ffffff;
+      box-shadow: 0px 0px 20px #ddd;
+      z-index: 99;
+    }
+
+    .login-title {
+      position: relative;
+      line-height: 40px;
+      font-size: 18px;
+      text-align: center;
+      cursor: move;
+      margin-top: 10px;
+      height: 40px;
+    }
+
+    .login-close {
+      position: absolute;
+      top: -30px;
+      right: -20px;
+      width: 40px;
+      height: 40px;
+      background-color: #FFF;
+      border: #ebebeb solid 1px;
+      border-radius: 20px;
+      /* 变为圆形 */
+    }
+
+    .login-close a {
+      font-size: 12px;
+      text-decoration: none;
+      color: black;
+    }
+
+    .login-input-content {
+      margin-top: 20px;
+    }
+
+    .login-input {
+      margin-bottom: 20px;
+    }
+
+    .login-input label {
+      display: inline-block;
+      float: left;
+      /*可去除input和label之间的莫名空隙 */
+      text-align: right;
+      /*文字靠右 */
+      width: 90px;
+      line-height: 35px;
+      margin-right: 20px;
+    }
+
+    .login-input input {
+      width: 350px;
+      height: 35px;
+      padding: 1px 2px;
+      border-radius: 3px;
+      border: #ebebeb 2px solid;
+      text-indent: 5px;
+    }
+
+    .login-button {
+      text-align: center;
+      margin: 30px auto 0px auto;
+    }
+
+    .login-button input {
+      display: block;
+      width: 50%;
+      height: 40px;
+      font-size: 14px;
+      margin: 0px auto;
+      background-color: white;
+      font-size: 14px;
+      border: #ebebeb 1px solid;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header"><a id="link" href="javascript:;">点击，弹出登录框</a></div>
+
+  <div class="login">
+    <div class="login-title">登录会员
+      <span class="login-close"><a href="jvascript:;" class="close-login">关闭</a></span>
+    </div>
+    <div class="login-input-content">
+      <div class="login-input">
+        <label for=''>
+          用户名:
+        </label>
+        <input type="text" class="" placeholder="请输入用户名">
+      </div>
+      <div class="login-input">
+        <label for="">
+          登录密码:
+        </label>
+        <input type="password" class="" placeholder="请输入登录密码">
+      </div>
+      <div class="login-button">
+        <input type="submit" value="登录会员">
+      </div>
+    </div>
+  </div>
+
+  <!-- 遮挡层 -->
+  <div class="login-bg"></div>
+
+  <script>
+    var popup = document.querySelector('#link');
+    var bg = document.querySelector('.login-bg');
+    var login = document.querySelector('.login');
+    var close = document.querySelector('.close-login');
+    var move = document.querySelector('.login-title');
+    popup.addEventListener('click', function () {
+      bg.style.display = 'block';
+      login.style.display = 'block';
+    }
+    )
+    close.addEventListener('click', function () {
+      bg.style.display = 'none';
+      login.style.display = 'none';
+    })
+    move.addEventListener('mousedown', function (e) {
+      var x = e.pageX - login.offsetLeft;
+      var y = e.pageY - login.offsetTop;
+      //不变的鼠标位于login的位置
+      document.addEventListener('mousemove', fn);
+      //在页面任何一个地方都可以拖动鼠标，所以事件源是document
+      function fn(e) {
+        login.style.left = e.pageX - x + 'px';
+        login.style.top = e.pageY - y + 'px';
+      }
+      //在页面任何一个地方都可以up鼠标，所以事件源是document
+      document.addEventListener('mouseup', function () {
+        document.removeEventListener('mousemove', fn);
+        //在哪里产生就移除哪里的
+
+      });
+    })
+  </script>
+</body>
+
+</html>
