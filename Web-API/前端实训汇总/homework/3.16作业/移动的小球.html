@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.ball{
+			height: 100px;
+			width: 100px;
+			border-radius: 50%;
+			background: linear-gradient(45deg,pink,skyblue);
+			animation:ball 3s linear 0s infinite;
+			position: absolute;
+			left: 0;
+			top:0;
+		}
+@keyframes ball{
+
+33%{
+left:200px;
+top:200px;
+}
+66%{
+border-radius: 0;
+left:100px;
+top:100px;
+}
+
+100%{
+border-radius: 50%;
+left:0px;
+top:0px;
+}
+
+}
+
+
+	</style>
+
+</head>
+<body>
+<div class="ball"></div>
+</body>
+</html>

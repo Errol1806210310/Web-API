@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 960px;
+      height: 540px;
+      margin: 100px auto;
+      position: relative;
+    }
+
+    img {
+      width: 960px;
+      height: 540px;
+    }
+
+    h2 {
+      position: absolute;
+      color: white;
+      bottom: 0px;
+      left: 0px;
+    }
+
+    .swiper-wrap {
+      list-style: none;
+    }
+
+    .swiper-item {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    <ul class="swiper-wrap">
+      <li class="swiper-item" style="display: block;">
+        <h2>1</h2>
+        <img src="img/1.jpg" alt="">
+      </li>
+      <li class="swiper-item">
+        <h2>2</h2>
+        <img src="img/2.jpg" alt="">
+      </li>
+      <li class="swiper-item">
+        <h2>3</h2>
+        <img src="img/3.jpg" alt="">
+      </li>
+      <li class="swiper-item">
+        <h2>4</h2>
+        <img src="img/4.jpg" alt="">
+      </li>
+      <li class="swiper-item">
+        <h2>5</h2>
+        <img src="img/5.jpg" alt="">
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    var items = document.querySelectorAll('.swiper-item');
+    var div = document.querySelector('div');
+    console.log(items.length);
+    var i = 0;
+
+    function swiper() {
+      i++;
+      i = i % 5;
+      for (var j = 0; j < 5; j++) {
+        items[j].style.display = "none";
+      }
+      //排他思想
+      items[i].style.display = "block";
+    }
+    div.onmouseenter = function () { clearInterval(picture); picture = null; }
+    div.onmouseleave = function () { if (picture == null) picture = setInterval(swiper, 1000); }
+
+    var picture = setInterval(swiper, 1000);
+
+
+  </script>
+</body>
+
+</html>

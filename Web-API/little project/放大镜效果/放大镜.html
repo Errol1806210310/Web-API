@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    div {
+      display: inline-block;
+      border: 1px solid black;
+      margin: 50px;
+      position: relative;
+      width: 400px;
+      height: 400px;
+    }
+
+    #yellow {
+      display: none;
+      margin: 0px;
+      border: 1px solid #ccc;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      height: 300px;
+      width: 300px;
+      background-color: #FEDE4F;
+      opacity: 0.5;
+      cursor: move;
+    }
+
+    #big {
+      display: none;
+      margin: 0px;
+      position: absolute;
+      top: 0px;
+      left: 410px;
+      height: 500px;
+      width: 500px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+    }
+
+    #phone {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div><img src="smartphone.png" alt="">
+    <div id="yellow"></div>
+    <div id="big">
+      <img src="big.jpg" alt="" id="phone">
+      <!--  图片实际上大小800*800 -->
+    </div>
+  </div>
+
+  <script>
+    var div = document.querySelector('div');
+    var yellow = document.querySelector('#yellow');
+    var big = document.querySelector('#big');
+    var phone = document.querySelector('#phone');
+    div.addEventListener('mouseover', function () {
+      yellow.style.display = 'block';
+      big.style.display = 'block';
+    })
+    div.addEventListener('mouseout', function () {
+      yellow.style.display = 'none';
+      big.style.display = 'none';
+    })
+    div.addEventListener('mousemove', function (e) {
+      var x = e.pageX - div.offsetLeft;
+      var y = e.pageY - div.offsetTop;
+      //鼠标在盒子的最中央显示
+      // yellow.style.width,yellow.style.height不起作用，最主要的一步
+      var move_x = x - yellow.offsetWidth / 2;
+      var move_y = y - yellow.offsetHeight / 2;
+      //范围,移动距离不可小于0，大于100
+      move_x < 0 ? move_x = 0 : move_x;
+      move_y < 0 ? move_y = 0 : move_y;
+      move_x > div.offsetWidth - yellow.offsetWidth ? move_x = div.offsetWidth - yellow.offsetWidth : move_x;
+      move_y > div.offsetHeight - yellow.offsetHeight ? move_y = div.offsetHeight - yellow.offsetHeight : move_y;
+      yellow.style.left = move_x + 'px';
+      yellow.style.top = move_y + 'px';
+      //大图片按照比例来移动
+      var j = phone.offsetWidth / yellow.offsetWidth;
+      var k = phone.offsetHeight / yellow.offsetHeight;
+      phone.style.left = -move_x * j + 'px';
+      phone.style.top = -move_y * k + 'px';
+    })
+  </script>
+</body>
+
+</html>

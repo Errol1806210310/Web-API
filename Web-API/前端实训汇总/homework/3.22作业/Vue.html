@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <style>
+    input {
+      width: 500px;
+      text-align: center;
+      line-height: 50px;
+    }
+
+    img {
+      height: 100px;
+      width: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{lama}}</h1>
+    <input type="text" v-model="miemie" />
+    <p>{{miemie}}</p>
+
+    <div v-for="(item,index) in list">
+      <h2>{{item.title}}</h2>
+      <p>{{item.content}}</p>
+      <img :src="item.imgurl">
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      lama: '小羊听了也是一脸的草！',
+      miemie: '小羊不想听你讲话，并对你发起了口水攻击',
+      list: [{ title: '懒羊羊', content: '青青草原上最肥的小羊之一，因此又称为小胖子，同时也是最懒的小羊。“懒”字已经诠释了他的特点：不爱运动，平时表现非常差劲。总是一副“举重若轻”的样子。贪吃，一旦闻到食物的香味，马上会被吸引过去，总是因为贪吃而闯祸。一闻到食物的香味，跑得比喜羊羊还快。', imgurl: 'img/1.jpg' },
+      { title: '喜羊羊', content: '他是青青草原中羊村里的绵羊，大肥羊学校的学生，村长慢羊羊的得力助手，父母因在外太空工作而将其托付给村长慢羊羊收养。是羊村的主心骨，是一只有勇有谋的羊，曾多次拯救了被灰太狼抓走的同伴们，阻挠了灰太狼吃羊。也多次捉弄灰太狼。但有时还会帮助有困难的灰太狼夫妇和小灰灰。他在羊村里是最机智聪明的羊，也是羊村跑的最快的羊。无数次打败灰太狼，拯救了羊族，是羊村的小英雄。', imgurl: 'img/2.jpg' },
+      { title: '沸羊羊', content: '羊村里健壮又鲁莽的一只羊。他最喜欢也是最擅长的事情就是运动，因而《喜羊羊与灰太狼之羊羊运动会》正好符合他的兴趣。然而沸羊羊的运气却有点背，尽管他很努力，可事实总是令他大失所望，而且还接二连三地遭到灰太狼的捣鬼。他还经常被懒羊羊取笑，十分地郁闷。', imgurl: 'img/3.jpg' }
+      ]
+    }
+  });
+</script>

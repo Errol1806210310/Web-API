@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script src='js/jquery.js'></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <style>
+    table {
+      width: 500px;
+      margin: 20px auto;
+
+    }
+
+    table,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    tr {
+      width: 50%;
+      line-height: 30px;
+
+    }
+
+    td {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="app">
+    <div class="jumbotron">
+      <h1 class="display-4">菜谱大全</h1>
+      <p class="lead">英雄不问出处，美女干饭不问斤数</p>
+      <hr class="my-4">
+      <div class="form-group">
+        <label for="search">请输入关键字</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          v-model="searchValue">
+      </div>
+      <button type="submit" class="btn btn-primary" id="find" v-on:click="searchFood">查询</button>
+    </div>
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item" v-for="(item,index) in list">
+          <h2>{{item.name}}</h2>
+          <p v-html="item.content"></p>
+          <img :src="item.pic">
+
+          <table>
+            <tr v-for="(items,indexs) in item.material">
+              <td>{{ items.mname }}</td>
+              <td>{{ items.amount }}</td>
+            </tr>
+          </table>
+
+
+      </ul>
+      </li>
+      </ul>
+    </div>
+
+  </div>
+</body>
+
+</html>
+
+<script>
+  var find = document.querySelector('#find');
+  new Vue({
+    el: '#app',
+    data: {
+      searchValue: '',
+      list: []
+    },
+    methods: {
+      searchFood: function () {
+        // console.log(this.searchValue);
+        var _this = this;
+        $.ajax({
+          url: 'http://localhost:3000/?keyword=' + _this.searchValue,
+          type: 'get',
+          success: function (res) {
+            console.log(res.body);
+            var body = JSON.parse(res.body);
+            //改为无标签显示的语言
+            // console.log(body.result.list);
+            _this.list = body.result[0];
+            console.log(_this.list);
+          }
+        })
+      }
+    }
+
+
+  });
+</script>

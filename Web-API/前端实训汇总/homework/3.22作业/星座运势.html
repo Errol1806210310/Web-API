@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery.js"></script>
+  <script src="js/vue.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <div id="app" class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">星座运势</h1>
+      <p class="lead">For entertainment only, please don't take it seriously</p>
+      <hr class="my-4">
+      <div class="form-group">
+        <label for="exampleInputPassword1">请输入你的星座:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" v-model="searchValue">
+      </div>
+      <button type="submit" class="btn btn-primary" @click="searchFund">Submit</button>
+    </div>
+
+    <!-- <div>
+
+      <ul class="list-group">
+        <li class="list-group-item">{{list.astroname}}</li>
+        <li class="list-group-item">{{list.date}}</li>
+        <li class="list-group-item"><img :src="list.pic"></li>
+      </ul>
+    </div> -->
+
+  </div>
+
+</body>
+
+</html>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      searchValue: '',
+      list: []
+    },
+    methods: {
+      searchFund: function () {
+        var _this = this;
+        // console.log(this.searchValue);
+        $.ajax({
+          url: 'http://localhost:3000/astro?keyword=' + _this.searchValue,
+          type: 'get',
+          success: function (res) {
+            console.log(res.body);
+            var body = JSON.parse(res.body);
+            // console.log(body.result.list);
+            _this.list = body.result[0];
+            console.log(_this.list);
+          }
+        })
+      }
+    }
+  })
+</script>

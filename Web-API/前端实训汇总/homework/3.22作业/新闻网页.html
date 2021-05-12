@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新闻网页</title>
+  <script src="js/jquery.js"></script>
+  <script src="js/vue.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <style type="text/css">
+    .card-img-top {
+      width: 288px;
+      height: 200px;
+    }
+
+    .card-text {
+      height: 200px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <div class="row">
+        <div class="card col-sm-4" style="width: 18rem;" V-for="(item,index) in list">
+          <img :src="item.pic" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            <p class="card-text" v-html="item.content"></p>
+            <a @click="changeShow(item)" class="btn btn-primary">查看详情</a>
+          </div>
+        </div>
+      </div>
+
+      <div v-if="show" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">{{modelNews.title}}</h5>
+              <button @click="changeShow" type="button" class="close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p v-html="modelNews.content"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+
+
+  </div>
+  </div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#app',
+    data: {
+      list: [],
+      show: false,
+      modelNews: {}
+    },
+    methods: {
+      changeShow: function (obj) {
+        this.show = !this.show;
+        this.modelNews = obj;
+      }
+    },
+    beforeMount: function () {
+      var _this = this;
+      $.ajax({
+        url: 'http://localhost:3000/news',
+        type: 'get',
+        success: function (res) {
+          _this.list = JSON.parse(res.body).result.list;
+          console.log(_this.list);
+        }
+      })
+    }
+  })
+</script>

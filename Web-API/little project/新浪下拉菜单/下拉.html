@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    body {
+      font-size: 10px;
+    }
+
+    #top {
+      margin-top: 10px;
+      margin-left: 30px;
+    }
+
+    #t-top {
+      display: inline-block;
+    }
+
+    #weibo {
+      border: 1px solid white;
+      display: inline-block;
+      width: 55px;
+      line-height: 20px;
+    }
+
+    #weibo:hover {
+      background-color: rgb(224, 224, 224);
+      border: 1px solid rgb(224, 224, 224);
+    }
+
+    i {
+      padding-left: 10px;
+      font-style: normal;
+    }
+
+    #icon-img {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin-left: 3px;
+      background: url('icon.png') right center;
+      background-position: 1px 628px;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    a:hover {
+      color: orange;
+    }
+
+    #top-menu {
+      display: none;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    .hou {
+      border: 1px solid orange;
+      border-top: 1px solid white;
+      width: 45px;
+      padding-left: 10px;
+      line-height: 20px;
+    }
+
+    .hou:hover {
+      background-color: rgb(247, 232, 205);
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="top">
+    <div id="t-top">
+
+      <a href="" id="weibo">
+        <i>微博</i><span id="icon-img"></span>
+      </a>
+
+      <div id="top-menu">
+        <ul>
+          <a href="">
+            <li class="hou">私信</li>
+          </a>
+          <a href="">
+            <li class="hou">评论</li>
+          </a>
+          <a href="">
+            <li class="hou">@我</li>
+          </a>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var top = document.querySelector('#top');
+    var t_top = document.querySelector('#t-top');
+    var weibo = document.querySelector('#weibo');
+    var topmenu = document.querySelector('#top-menu');
+    t_top.onmouseover = function () {
+      topmenu.style.display = 'block';
+      weibo.style.backgroundColor = 'rgb(224, 224, 224)';
+    };
+    t_top.onmouseout = function () {
+      topmenu.style.display = 'none';
+      weibo.style.backgroundColor = 'white';
+    };
+
+  </script>
+</body>
+
+</html>

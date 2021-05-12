@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .boundary {
+      border: 1px solid black;
+      position: relative;
+      width: 800px;
+      height: 500px;
+      margin: 100px auto;
+    }
+
+    .ball {
+      width: 50px;
+      height: 50px;
+      background-color: pink;
+      border-radius: 50%;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="boundary">
+    <div class="ball"></div>
+  </div>
+
+  <script>
+    var ball = document.querySelector('.ball');
+    var stepX = 1;
+    var stepY = 1;
+    var num = 1;
+    function move() {
+      var nowTop = ball.offsetTop;
+      var nowLeft = ball.offsetLeft;
+      if (nowLeft > 800 - ball.offsetWidth || nowLeft < 0) {
+        stepX = -1 * stepX;  //改变stepX,stepY的正负号，每一次触碰到边界的时候
+        num++;
+      }
+      if (nowTop > 500 - ball.offsetHeight || nowTop < 0) {
+        stepY = -1 * stepY;
+        num++;
+      }
+      change();
+      ball.style.left = nowLeft + stepX + 'px';
+      ball.style.top = nowTop + stepY + 'px';
+    }
+
+    function change() {
+      if (num % 2 == 0) { ball.style.borderRadius = 0, ball.style.background = 'skyblue'; }
+      //改变形状用borderRadius
+      else { ball.style.borderRadius = '50%'; ball.style.background = 'pink'; }
+    }
+
+    setInterval(move, 1);
+    //计时器
+
+  </script>
+</body>
+
+</html>

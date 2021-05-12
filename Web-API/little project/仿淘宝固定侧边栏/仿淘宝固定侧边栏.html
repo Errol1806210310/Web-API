@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: purple;
+      width: 1200px;
+      height: 150px;
+      margin: 5px auto;
+    }
+
+    .banner {
+      background-color: skyblue;
+      width: 1200px;
+      margin: 5px auto;
+      height: 300px;
+    }
+
+    .main {
+      background-color: rgb(118, 238, 118);
+      width: 1200px;
+      margin: 5px auto;
+      height: 800px;
+    }
+
+    .side {
+      position: absolute;
+      top: 330px;
+      right: 112px;
+      width: 47px;
+      height: 150px;
+      background-color: pink;
+      text-align: center;
+    }
+
+    span {
+      display: none;
+      position: absolute;
+      bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">头部区域</div>
+  <div class="banner">banner区域</div>
+  <div class="main">主体部分</div>
+  <div class="side">
+    <span class="goBack">返回顶部</span>
+  </div>
+
+  <script>
+    var goBack = document.querySelector('.goBack');
+    var side = document.querySelector('.side');
+    var banner = document.querySelector('.banner');
+    var main = document.querySelector('.main');
+    var sideTop = side.offsetTop - banner.offsetTop;
+    document.addEventListener('scroll', function () {
+      if (window.pageYOffset >= banner.offsetTop) {
+        side.style.position = 'fixed';
+        side.style.top = sideTop + 'px';
+      }
+      if (window.pageYOffset <= banner.offsetTop) {
+        side.style.position = 'absolute';
+        side.style.top = '330px';
+        side.style.right = '112px';
+      }
+      if (window.pageYOffset >= main.offsetTop)
+        goBack.style.display = 'block';
+      if (window.pageYOffset <= main.offsetTop)
+        goBack.style.display = 'none';
+    })
+
+
+  </script>
+</body>
+
+</html>

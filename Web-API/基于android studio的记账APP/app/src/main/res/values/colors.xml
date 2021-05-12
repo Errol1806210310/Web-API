@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#f1c763</color>
+    <color name="black">#000000</color>
+    <color name="grey_f5f6fa">#f5f6fa</color>   <!--主界面背景色-->
+    <color name="grey_7D7D7D">#7D7D7D</color>
+    <color name="white">#ffffff</color>
+    <color name="yellow_f1c763">#f1c763</color>
+    <color name="grey_333333">#333333</color>
+</resources>

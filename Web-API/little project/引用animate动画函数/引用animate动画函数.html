@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .first {
+      background-color: purple;
+      position: fixed;
+      right: 0;
+      bottom: 200px;
+      width: 40px;
+      line-height: 40px;
+      cursor: pointer;
+      text-align: center;
+      color: #fff;
+    }
+
+
+    .second {
+      background-color: purple;
+      position: absolute;
+      left: 0px;
+      top: 0;
+      width: 200px;
+      line-height: 40px;
+      z-index: -1;
+    }
+  </style>
+  <script src="animate.js"></script>
+</head>
+
+<body>
+  <div class="first">
+    <span>←</span>
+    <div class="second">问题反馈</div>
+  </div>
+
+  <script>
+    var first = document.querySelector('.first');
+    var span = document.querySelector('span');
+    var second = document.querySelector('.second');
+    first.addEventListener('mouseenter', function () {
+      animate(second, -160, function () {
+        span.innerHTML = '→';
+      });
+    })
+    first.addEventListener('mouseleave', function () {
+      animate(second, 0, function () {
+        span.innerHTML = '←';
+      });
+    })
+//
+  </script>
+</body>
+
+</html>

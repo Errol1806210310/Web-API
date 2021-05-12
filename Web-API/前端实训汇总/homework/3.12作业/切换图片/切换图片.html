@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>换图片</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		div {
+			width: 400px;
+			height: 400px;
+			background-color: yellowgreen;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin: auto;
+			overflow: hidden;
+		}
+
+		ul {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 400%;
+			height: 100%;
+			list-style-type: none;
+		}
+
+		li {
+			float: left;
+		}
+	</style>
+	<script src="animate.js"></script>
+</head>
+
+<body>
+	<div>
+
+		<ul>
+			<li><img src="../变换属性/1.jpg" alt=""></li>
+			<li><img src="../变换属性/4.jpg" alt=""></li>
+			<li><img src="../变换属性/3.jpg" alt=""></li>
+		</ul>
+	</div>
+
+	<script>
+		var ul = document.querySelector('ul');
+		ul.addEventListener('mouseenter', function () {
+			animate(ul, -800, function () {
+			});
+		})
+		ul.addEventListener('mouseleave', function () {
+			animate(ul, 0, function () {
+			});
+		})
+//
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#swiper{
+			width: 400px;
+			height: 400px;
+			border: 1px solid black;
+			position: relative;
+			margin: 150px auto;
+			overflow:hidden;
+		}
+		#swiper-wrap{
+			list-style: none;
+			height: 400px;
+			width: 2200px;
+			position: absolute;
+			top:0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+ 			animation: zou 10s ease  0s infinite normal;
+		}
+		@keyframes zou{
+			25%{left: -400px;}
+			50%{left: -800px;}
+			75%{left: -1200px;}
+			100%{left: -1600px;}
+			}
+		.swiper-item{
+			float: left;
+		}
+		.swiper-item,img{
+            width: 400px;
+			height: 400px;
+		}
+		
+	</style>
+
+</head>
+<body>
+	<div id="swiper">
+		<ul id="swiper-wrap">
+	<li class="swiper-item">
+		<a href="#"><img src="img/1.jpg"></a>
+	</li>
+	<li class="swiper-item">
+		<a href="#"><img src="img/2.jpg"></a>
+	</li>
+	<li class="swiper-item">
+		<a href="#"><img src="img/3.jpg"></a>
+	</li>
+	<li class="swiper-item">
+		<a href="#"><img src="img/4.jpg"></a>
+	</li>
+	<li class="swiper-item">
+		<a href="#"><img src="img/1.jpg"></a>
+	</li>
+	</ul>
+	</div>
+
+</body>
+</html>

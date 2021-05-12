@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>柯南</title>
+	<style type="text/css">
+		body {
+			perspective: 1200px;
+		}
+
+		.border {
+			width: 800px;
+			height: 800px;
+			margin: auto;
+			border: 1px solid pink;
+			transition: all linear 3s 0s;
+			transform-style: preserve-3d;
+		}
+
+		.one {
+			width: 400px;
+			height: 400px;
+			background-image: url(1.jpg);
+			transform: translateX(200px) translateY(200px) translateZ(200px);
+		}
+
+		.two {
+			width: 400px;
+			height: 400px;
+			background-image: url(2.jpg);
+			transform: translateX(200px) translateY(-200px) translateZ(-200px) rotateY(180deg);
+
+		}
+
+		.three {
+			width: 400px;
+			height: 400px;
+			background-image: url(3.jpg);
+			transform: translateX(400px) translateY(-600px) translateZ(0px) rotateY(90deg);
+		}
+
+		.four {
+			width: 400px;
+			height: 400px;
+			background-image: url(4.jpg);
+			transform: translateX(0px) translateY(-1000px) translateZ(0px) rotateY(90deg);
+		}
+
+		.border:hover {
+			transform: rotateY(360deg);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="border">
+
+		<div class="one"></div>
+		<div class="two"></div>
+		<div class="three"></div>
+		<div class="four"></div>
+	</div>
+</body>
+
+</html>

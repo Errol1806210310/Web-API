@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+
+<body>
+  <input type="text">
+  <script>
+    var text = document.querySelector('input');
+    document.addEventListener('keyup', function (e) {    //不能使用keydown，否则会有s写入text内，按下时不断触发
+
+      if (e.keyCode == 83) text.focus();
+    })
+  </script>
+</body>
+
+</html>

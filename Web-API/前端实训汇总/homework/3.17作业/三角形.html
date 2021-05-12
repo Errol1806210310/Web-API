@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+    var total_row = 5;
+    for (var row = 0; row < total_row; row++) {
+      for (var i = total_row - row - 1; i > 0; i--) {
+        document.write('&nbsp&nbsp');
+      }
+      for (var col = 0; col < 2 * row + 1; col++) {
+        document.write('*&nbsp');
+      }
+      //因为*和&nbsp大小不一致，所以不是很齐
+      document.write('<br>');
+    }
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

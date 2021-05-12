@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <!-- 形状设置为圆形-->
+
+    <!-- 填充颜色-->
+    <solid android:color="@color/yellow_f1c763"/>
+</shape>
